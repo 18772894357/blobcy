@@ -13,7 +13,7 @@ const uploadFileCtrl = {
     }
     let data = {
       "imageUrl": "http://localhost:3000/api/uploadFile?action=uploadimage",
-      "imagePath": "/imageStorage/",
+      "imagePath": "./imageStorage/",
       "imageFieldName": "upfile",
       "imageMaxSize": 2048,
       "imageAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"]

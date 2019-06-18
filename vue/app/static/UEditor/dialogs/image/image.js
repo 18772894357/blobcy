@@ -247,16 +247,13 @@
         },
         setPreview: function(){
             var url = $G('url').value,
-                ow = parseInt($G('width').value, 10) || 0,
-                oh = parseInt($G('height').value, 10) || 0,
-                border = parseInt($G('border').value, 10) || 0,
+                ow = $G('width').value,
+                oh = $G('height').value,
+                border = $G('border').value,
                 title = $G('title').value,
                 preview = $G('preview'),
                 width,
                 height;
-
-            url = utils.unhtmlForUrl(url);
-            title = utils.unhtml(title);
 
             width = ((!ow || !oh) ? preview.offsetWidth:Math.min(ow, preview.offsetWidth));
             width = width+(border*2) > preview.offsetWidth ? width:(preview.offsetWidth - (border*2));
@@ -704,12 +701,6 @@
             uploader.on('uploadBeforeSend', function (file, data, header) {
                 //这里可以通过data对象添加POST参数
                 header['X_Requested_With'] = 'XMLHttpRequest';
-                // HaoChuan9421
-                if(editor.options.headers && Object.prototype.toString.apply(editor.options.headers) === "[object Object]"){
-                    for(var key in editor.options.headers){
-                        header[key] = editor.options.headers[key]
-                    }
-                }
             });
 
             uploader.on('uploadProgress', function (file, percentage) {

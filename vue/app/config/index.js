@@ -13,7 +13,7 @@ module.exports = {
     proxyTable: {
         '/api/':{
             // target: 'http://192.168.1.208:8080/', //http://192.168.1.103:8080/apricots/
-            target: 'http://localhost:3000/', // 开发
+            target: 'http://localhost:3333/', // 开发
             // target: 'http://192.168.2.226:8080/', // 李翔
             //target: 'http://192.168.8.138:8080',  // 诸祥
             // target: 'http://192.168.8.164:8080', // 杜祥辰
