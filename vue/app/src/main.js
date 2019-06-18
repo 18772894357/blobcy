@@ -7,6 +7,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/app.css'
 import api from '@/api'
+import './components'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
