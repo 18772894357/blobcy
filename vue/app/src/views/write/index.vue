@@ -1,15 +1,10 @@
 <template>
   <div class="wrap white_box">
     <el-card class='m-t-sm'>
-      <!-- <el-form :model='form' ref='form' label-width="120px">
-        <el-form-item label='标题'>
-          <el-input v-model='form.title'></el-input>
-        </el-form-item>
-        <el-form-item label='内容'>
-          <el-input v-model='form.content' type='textarea' rows='25'></el-input>
-        </el-form-item>
-      </el-form> -->
       <vue-ueditor-wrap :config="myConfig" v-model='msg'></vue-ueditor-wrap>
+      <div class="text-center">
+        <el-button type='primary' class='m-t-sm' @click='publish'>发布</el-button>
+      </div>
     </el-card>
   </div>
 </template>
@@ -18,10 +13,6 @@ export default {
   name: 'read',
   data () {
     return {
-      form: {
-        title: '',
-        content: ''
-      },
       msg: '',
       myConfig: {
         autoHeightEnabled: false,
@@ -29,19 +20,24 @@ export default {
         initialFrameHeight: 540,
         // 初始容器宽度
         initialFrameWidth: '100%',
-        // serverUrl: 'http://35.201.165.105:8000/controller.php',
-        // serverUrl: 'http://35.201.165.105:8000/controller.php',
-        serverUrl: 'http://192.168.1.103:3333/api/uploadFile',
-        // UEditor 资源文件的存放路径，如果你使用的是 vue-cli 生成的项目，通常不需要设置该选项，vue-ueditor-wrap 会自动处理常见的情况，如果需要特殊配置，参考下方的常见问题2
-        maximumWords: 100000,
-        imagePathFormat: '/imageStorage/{yyyy}{mm}{dd}/{time}(rand: 6)',
-        imageUrlPrefix: './imageStorage'
+        serverUrl: 'http://localhost:3000/api/uploadFile',
+        maximumWords: 100000
       }
     }
   },
   methods: {
-    test () {
-      console.log(this.msg)
+    publish () {
+      if (!this.msg) {
+        this.$notify.error('请输入文章的标题和内容！')
+      } else {
+        let reg = /^<h[1-6]>([\s\S]+)<\/h[1-6]>/
+        let params = {}
+        if (reg.test(this.msg)) {
+          params.title = RegExp.$1
+          params.content = this.msg
+          params.time = new Date().format('yyyy-MM-dd HH:mm:ss')
+        }
+      }
     }
   }
 }

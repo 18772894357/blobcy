@@ -26,7 +26,7 @@ export default {
     width: 100%;
     background: #fff;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
-    z-index: 999;
+    z-index: 1001;
   }
   .app_header-navbox{
     width: 1000px;
