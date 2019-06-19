@@ -36,6 +36,9 @@ export default {
           params.title = RegExp.$1
           params.content = this.msg
           params.time = new Date().format('yyyy-MM-dd HH:mm:ss')
+          this.$http.createBlob(params).then(data => {
+            console.log(data)
+          })
         }
       }
     }

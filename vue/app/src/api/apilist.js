@@ -10,8 +10,9 @@ let apilist = {
   // 写文章
   createBlob: (data) => {
     return method({
-      url: '/api/createBlob',
-      data: data
+      url: '/api/create_blob',
+      data: data,
+      method: 'post'
     })
   }
 }

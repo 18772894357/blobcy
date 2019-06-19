@@ -1,12 +1,14 @@
 import axios from 'axios'
 import config from './config.js'
 import $bus from '@/main.js'
+import qs from 'qs'
 
 let method = (params) => {
   return axios({
     method: params.method || 'get',
     url: params.url,
-    params: params.data,
+    params: params.method === 'post' ? '' : params.data,
+    data: params.method === 'post' ? qs.stringify(params.data) : '', 
     timeout: config.timeout,
     headers: config.headers
   })
