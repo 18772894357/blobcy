@@ -8,7 +8,7 @@ let method = (params) => {
     method: params.method || 'get',
     url: params.url,
     params: params.method === 'post' ? '' : params.data,
-    data: params.method === 'post' ? qs.stringify(params.data) : '', 
+    data: params.method === 'post' ? qs.stringify(params.data) : '',
     timeout: config.timeout,
     headers: config.headers
   })

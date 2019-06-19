@@ -1,7 +1,8 @@
 <template>
   <div class="wrap white_box">
     <el-card class='m-t-sm'>
-      <vue-ueditor-wrap :config="myConfig" v-model='msg'></vue-ueditor-wrap>
+      <el-input class='m-b-sm' placeholder='请输入标题' v-model='title'></el-input>
+      <vue-ueditor-wrap :config="myConfig" v-model='content'></vue-ueditor-wrap>
       <div class="text-center">
         <el-button type='primary' class='m-t-sm' @click='publish'>发布</el-button>
       </div>
@@ -13,7 +14,8 @@ export default {
   name: 'read',
   data () {
     return {
-      msg: '',
+      title: '',
+      conent: '',
       myConfig: {
         autoHeightEnabled: false,
         // 初始容器高度
@@ -27,20 +29,18 @@ export default {
   },
   methods: {
     publish () {
-      if (!this.msg) {
+      if (!this.content && !this.title) {
         this.$notify.error('请输入文章的标题和内容！')
-      } else {
-        let reg = /^<h[1-6]>([\s\S]+)<\/h[1-6]>/
-        let params = {}
-        if (reg.test(this.msg)) {
-          params.title = RegExp.$1
-          params.content = this.msg
-          params.time = new Date().format('yyyy-MM-dd HH:mm:ss')
-          this.$http.createBlob(params).then(data => {
-            console.log(data)
-          })
-        }
+        return
       }
+      let params = {
+        title: this.title,
+        content: this.content,
+        time: new Date().format('yyyy-MM-dd HH:mm:ss')
+      }
+      this.$http.createBlob(params).then(data => {
+        this.$notify.success('当前发布成功！请去博客内容区查看')
+      })
     }
   }
 }

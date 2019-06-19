@@ -14,6 +14,13 @@ let apilist = {
       data: data,
       method: 'post'
     })
+  },
+  // 获取文章详情
+  getContent: (data) => {
+    return method({
+      url: '/api/get_detail',
+      data: data
+    })
   }
 }
 export default apilist
