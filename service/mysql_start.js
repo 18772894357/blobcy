@@ -7,7 +7,8 @@ const connection = mysql.createConnection({
   user: 'root',
   password: 'blobcymysql',
   port: '3306',
-  database: DATABASE
+  database: DATABASE,
+   useConnectionPooling: true
 });
 connection.connect(function(err){
   if(err){
