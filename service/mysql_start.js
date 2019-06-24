@@ -7,7 +7,8 @@ const connection = mysql.createConnection({
   user: 'root',
   password: 'blobcymysql',
   port: '3306',
-  database: DATABASE
+  database: DATABASE,
+  useConnectionPooling: true
 });
 connection.connect(function(err){
   if(err){
@@ -15,6 +16,9 @@ connection.connect(function(err){
     return;
   }
   console.log('[connection connect]  succeed!');
+});
+connection.on('error', (err) => {
+  console.log('log2:' + err);
 });
 
 module.exports = {

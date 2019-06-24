@@ -58,10 +58,8 @@ function deleteall(path) {
             var curPath = path + "/" + file;
             if(fs.statSync(curPath).isDirectory()) { // recurse         
                 deleteall(curPath);         
-            } else { // delete file
-                console.log(11111111);      
+            } else { // delete file    
                 fs.unlinkSync(curPath);
-                console.log(22222222); 
             }
         });
         exists('./dist/static','../../public/static',copy);

@@ -15,14 +15,14 @@ export default {
   data () {
     return {
       title: '',
-      conent: '',
+      content: '',
       myConfig: {
         autoHeightEnabled: false,
         // 初始容器高度
         initialFrameHeight: 540,
         // 初始容器宽度
         initialFrameWidth: '100%',
-        serverUrl: 'http://localhost:3000/api/uploadFile',
+        serverUrl: 'http://47.111.116.9:3000/api/uploadFile',
         maximumWords: 100000
       }
     }
