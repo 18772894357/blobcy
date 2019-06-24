@@ -22,7 +22,7 @@ export default {
         initialFrameHeight: 540,
         // 初始容器宽度
         initialFrameWidth: '100%',
-        serverUrl: 'http://47.111.116.9:3000/api/uploadFile',
+        serverUrl: 'http://47.111.116.91:3000/api/uploadFile',
         maximumWords: 100000
       }
     }
