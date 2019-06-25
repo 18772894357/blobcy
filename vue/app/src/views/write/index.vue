@@ -36,7 +36,7 @@ export default {
       let params = {
         title: this.title,
         content: this.content,
-        time: new Date().format('yyyy-MM-dd HH:mm:ss')
+        time: new Date().format('yyyy-MM-dd hh:mm:ss')
       }
       this.$http.createBlob(params).then(data => {
         this.$notify.success('当前发布成功！请去博客内容区查看')

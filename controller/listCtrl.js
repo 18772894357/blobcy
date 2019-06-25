@@ -1,13 +1,10 @@
-const {connection, TABLE} = require('../service/mysql_start.js')
-const SQL = 'select title,id from ' + TABLE
-
+const {TABLE, connection} = require('../service/mysql_start.js');
+const SQL = 'select title,id,time from ' + TABLE + ' order by cast(time as datetime) desc'
 module.exports = (req, res, next) => {
-  connection.query(SQL, (err, data) => {
-    if (err) {
-      console.log('log1: 当前读取博客内容出现错误==' + err);
-      res.send({code: 1, message: '当前读取内容出错，请联系管理员！'});
-    } else {
-      res.send({code: 0, data: data});
-    }
-  })
+  connection(SQL).then(data => {
+    res.send({code: 0, data: data});
+  }).catch((e) => {
+    console.log('log1:' + e);
+    res.send({code: 1, message: '当前请求错误，请联系管理员！'});
+  });
 }
