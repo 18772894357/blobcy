@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import read from '@/views/read'
 import write from '@/views/write'
 import detail from '@/views/detail'
+import test from '@/views/test'
 
 Vue.use(Router)
 
@@ -24,6 +25,10 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: detail
+    }, {
+      path: '/test',
+      name: 'test',
+      component: test
     }, {
       path: '*',
       redirect: '/'
