@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap detail_box m-t-sm">
+  <div class="wrap detail_box m-t-sm m-b-sm">
     <el-card shadow="never" style='height: 100%;min-height: calc(100vh - 150px);'>
       <h1 class='text-center'>{{content.title}}</h1>
       <div v-html='content.content'></div>

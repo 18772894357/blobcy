@@ -30,6 +30,9 @@ var copy = function(src,dst){
                     writable=fs.createWriteStream(_dst);//创建写入流
                     readable.pipe(writable);
                 }else if(st.isDirectory()){
+                    if (_src.indexOf('UEditor') > -1) {
+                        return;
+                    }
                     exists(_src,_dst,copy);
                 }
             });
@@ -56,7 +59,10 @@ function deleteall(path) {
         files = fs.readdirSync(path);
         files.forEach(function(file, index) {
             var curPath = path + "/" + file;
-            if(fs.statSync(curPath).isDirectory()) { // recurse         
+            if(fs.statSync(curPath).isDirectory()) { // recurse
+                if (curPath.indexOf('UEditor') > -1) {
+                    return;
+                }
                 deleteall(curPath);         
             } else { // delete file    
                 fs.unlinkSync(curPath);
